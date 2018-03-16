@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * 介绍：一个给RecyclerView添加HeaderView FooterView的装饰Adapter类
+ * 介绍：一个给RecyclerView添加 HeaderView FooterView 的装饰Adapter类
  * 重点哦~ RecyclerView的HeaderView将可以被系统回收，不像老版的HeaderView是一个强引用在内存里
  * 作者：zhangxutong
  * 邮箱：zhangxutong@imcoming.com
@@ -18,7 +18,7 @@ public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView
     private static final int BASE_ITEM_TYPE_HEADER = 1000000;//headerview的viewtype基准值
     private static final int BASE_ITEM_TYPE_FOOTER = 2000000;//footerView的ViewType基准值
 
-    //存放HeaderViews的layoudID和data,key是viewType，value 是 layoudID和data，
+    // 存放HeaderViews的layoudID和data,key是viewType，value 是 layoudID和data，
     // 在createViewHOlder里根据layoutId创建UI,
     // 在onbindViewHOlder里依据这个data渲染UI，同时也将layoutId回传出去用于判断何种Header
     private SparseArrayCompat<SparseArrayCompat> mHeaderDatas = new SparseArrayCompat<SparseArrayCompat>();

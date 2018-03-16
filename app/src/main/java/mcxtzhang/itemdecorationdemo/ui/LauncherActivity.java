@@ -13,6 +13,7 @@ public class LauncherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+        // 高仿微信通讯录界面
         findViewById(R.id.wx).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -20,6 +21,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
+        // 普通城市列表界面
         findViewById(R.id.main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,6 +29,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
+        // 搭配侧滑删除
         findViewById(R.id.swipe).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +37,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
+        // 美团城市列表
         findViewById(R.id.meituanCityList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
