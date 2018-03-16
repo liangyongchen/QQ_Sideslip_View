@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
         mIndexBar = (IndexBar) findViewById(R.id.indexBar);//IndexBar
 
         mIndexBar.setmPressedShowTextView(mTvSideBarHint)//设置HintTextView
-                .setNeedRealIndex(true)//设置需要真实的索引
+                .setNeedRealIndex(false)//设置需要真实的索引
                 .setmLayoutManager(mManager);//设置RecyclerView的LayoutManager
 
         initDatas(getResources().getStringArray(R.array.provinces));

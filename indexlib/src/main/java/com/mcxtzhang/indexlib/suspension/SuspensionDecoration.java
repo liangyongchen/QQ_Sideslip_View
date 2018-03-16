@@ -30,8 +30,8 @@ public class SuspensionDecoration extends RecyclerView.ItemDecoration {
     private LayoutInflater mInflater;
 
     private int mTitleHeight;//title的高
-    private static int COLOR_TITLE_BG = Color.parseColor("#FFDFDFDF");
-    private static int COLOR_TITLE_FONT = Color.parseColor("#FF999999");
+    private static int COLOR_TITLE_BG = Color.parseColor("#FFDFDFDF");  // 标题框背景颜色
+    private static int COLOR_TITLE_FONT = Color.parseColor("#FF999999");// 标题框字体颜色
     private static int mTitleFontSize;//title字体大小
 
     private int mHeaderViewCount = 0;
@@ -242,7 +242,8 @@ public class SuspensionDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
+                               RecyclerView.State state) {
         //super里会先设置0 0 0 0
         super.getItemOffsets(outRect, view, parent, state);
         int position = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
@@ -253,14 +254,17 @@ public class SuspensionDecoration extends RecyclerView.ItemDecoration {
         //我记得Rv的item position在重置时可能为-1.保险点判断一下吧
         if (position > -1) {
             ISuspensionInterface titleCategoryInterface = mDatas.get(position);
-            //等于0肯定要有title的,
+            // 等于0肯定要有title的,
             // 2016 11 07 add 考虑到headerView 等于0 也不应该有title
             // 2016 11 10 add 通过接口里的isShowSuspension() 方法，先过滤掉不想显示悬停的item
             if (titleCategoryInterface.isShowSuspension()) {
                 if (position == 0) {
+                    // set(int left, int top, int right, int bottom)
                     outRect.set(0, mTitleHeight, 0, 0);
                 } else {//其他的通过判断
-                    if (null != titleCategoryInterface.getSuspensionTag() && !titleCategoryInterface.getSuspensionTag().equals(mDatas.get(position - 1).getSuspensionTag())) {
+                    if (null != titleCategoryInterface.getSuspensionTag()
+                            && !titleCategoryInterface.getSuspensionTag().equals(mDatas.get(position - 1).getSuspensionTag())) {
+
                         //不为空 且跟前一个tag不一样了，说明是新的分类，也要title
                         outRect.set(0, mTitleHeight, 0, 0);
                     }
