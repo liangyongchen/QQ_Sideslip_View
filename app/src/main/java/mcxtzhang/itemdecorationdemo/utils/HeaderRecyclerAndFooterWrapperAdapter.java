@@ -21,7 +21,7 @@ public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView
     // 存放HeaderViews的layoudID和data,key是viewType，value 是 layoudID和data，
     // 在createViewHOlder里根据layoutId创建UI,
     // 在onbindViewHOlder里依据这个data渲染UI，同时也将layoutId回传出去用于判断何种Header
-    private SparseArrayCompat<SparseArrayCompat> mHeaderDatas = new SparseArrayCompat<SparseArrayCompat>();
+    private SparseArrayCompat<SparseArrayCompat> mHeaderDatas = new SparseArrayCompat<SparseArrayCompat>(); // SparseArrayCompat 是map集合
     private SparseArrayCompat<View> mFooterViews = new SparseArrayCompat<>();//存放FooterViews,key是viewType
 
     protected RecyclerView.Adapter mInnerAdapter;//内部的的普通Adapter
@@ -216,6 +216,7 @@ public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView
 
     }
 
+    // 当列表项出现到可视界面的时候调用
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
         mInnerAdapter.onViewAttachedToWindow(holder);
@@ -229,7 +230,9 @@ public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView
                 StaggeredGridLayoutManager.LayoutParams p =
                         (StaggeredGridLayoutManager.LayoutParams) lp;
 
+                // 如果是刷新、加载更多或头布局、脚布局独占一行,否则按照设置展示
                 p.setFullSpan(true);
+                // 这样,即使布局为 GridLayoutManager 或者 StaggeredGridLayoutManager 刷新、加载更多、头布局、脚布局都是单独的一行了。
             }
         }
     }
