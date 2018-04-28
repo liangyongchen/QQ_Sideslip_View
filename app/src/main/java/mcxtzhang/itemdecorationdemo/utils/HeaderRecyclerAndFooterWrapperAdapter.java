@@ -15,8 +15,9 @@ import android.view.ViewGroup;
  * 时间： 2016/8/2.
  */
 public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final int BASE_ITEM_TYPE_HEADER = 1000000;//headerview的viewtype基准值
-    private static final int BASE_ITEM_TYPE_FOOTER = 2000000;//footerView的ViewType基准值
+
+    private static final int BASE_ITEM_TYPE_HEADER = 1000000; // headerview的viewtype基准值
+    private static final int BASE_ITEM_TYPE_FOOTER = 2000000; // footerView的ViewType基准值
 
     // 存放HeaderViews的layoudID和data,key是viewType，value 是 layoudID和data，
     // 在createViewHOlder里根据layoutId创建UI,
@@ -142,11 +143,14 @@ public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView
         addFooterView(v);
     }
 
+
     @Override
     public int getItemViewType(int position) {
         if (isHeaderViewPos(position)) {
+            int type = mHeaderDatas.keyAt(position);
             return mHeaderDatas.keyAt(position);
         } else if (isFooterViewPos(position)) {//举例：header 2， innter 2， 0123都不是，4才是，4-2-2 = 0，ok。
+            int type = mFooterViews.keyAt(position - getHeaderViewCount() - getInnerItemCount());
             return mFooterViews.keyAt(position - getHeaderViewCount() - getInnerItemCount());
         }
         return super.getItemViewType(position - getHeaderViewCount());
@@ -236,4 +240,5 @@ public abstract class HeaderRecyclerAndFooterWrapperAdapter extends RecyclerView
             }
         }
     }
+
 }

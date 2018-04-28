@@ -98,13 +98,16 @@ public class MeituanSelectCityActivity extends AppCompatActivity {
                                     @Override
                                     public void convert(ViewHolder holder, final String cityName) {
                                         holder.setText(R.id.tvName, cityName);
+
                                         holder.getConvertView().setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 Toast.makeText(mContext, "cityName:" + cityName, Toast.LENGTH_SHORT).show();
                                             }
                                         });
+
                                     }
+
                                 });
                         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
                         break;
